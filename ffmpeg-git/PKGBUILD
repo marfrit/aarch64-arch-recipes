@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=.r.ge8587043dc
+pkgver=.r.g904a85173f
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -109,13 +109,13 @@ provides=(
   'libswresample.so'
   'libswscale.so')
 conflicts=('ffmpeg')
-source=('git+https://github.com/Kwiboo/FFmpeg.git'
+source=('git+https://github.com/jernejsk/FFmpeg.git'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch')
 sha256sums=('SKIP'
             '1c4f328bfb0dfedf4478f7b3659bcd08c591823a389b9e9e4eb8c35b0b3e0356')
 
 prepare() {
-    git -C FFmpeg checkout v4l2request-2025-v3-rkvdec
+    git -C FFmpeg checkout v4l2-request-n7.1
 
     patch -d FFmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
 }
@@ -204,7 +204,8 @@ build() {
         --enable-shared \
         --enable-vapoursynth \
         --enable-version3 \
-        --enable-vulkan
+        --enable-vulkan \
+        --disable-doc
     make
     make tools/qt-faststart
 }

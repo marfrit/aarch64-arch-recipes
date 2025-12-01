@@ -53,3 +53,7 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+ffmpeg-git/FFmpeg
+ffmpeg-git/pkg
+ffmpeg-git/src
